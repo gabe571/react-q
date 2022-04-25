@@ -27,6 +27,33 @@ const Register = () => {
     const [ errMsg, setErrMsg] = useState('');
     const [ success, setSuccess] = useState(false);
 
+    //set focus on intial page load -> username
+    useEffect(() => {
+        userRef.current.focus():
+    }, [])
+
+    //validating username
+    useEffect(() => {
+        const result = USER_REGEX.test(user);
+        console.log(result);
+        console.log(user);
+        setValidName(result);
+    }, [user])
+
+    //validating password
+    useEffect(() => {
+       const result = PWD_REGEX.test(pwd);
+       console.log(result);
+       console.log(pwd);
+       setValidPwd(result);
+       const match = pwd === matchPwd;
+       setValidMatch(match);
+    }, [pwd, matchPwd])
+
+    //error message
+    useEffect(() => {
+        setErrMsg('');
+    }, [user, pwd, matchPwd])
 
        return (
     <div>
